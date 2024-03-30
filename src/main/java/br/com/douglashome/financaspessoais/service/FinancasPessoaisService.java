@@ -7,5 +7,7 @@ import br.com.douglashome.financaspessoais.entitie.FinancasPessoaisEntity;
 public interface FinancasPessoaisService {
 
 	List<FinancasPessoaisEntity> listAllFinancas();
+	
+	public FinancasPessoaisEntity insertGastos (FinancasPessoaisEntity pessoaisEntity);
 
 }

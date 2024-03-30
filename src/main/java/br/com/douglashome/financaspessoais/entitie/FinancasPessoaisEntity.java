@@ -26,9 +26,6 @@ public class FinancasPessoaisEntity {
 	@Column(name = "data", nullable = false, length = 500)
 	private Date data;
 
-	@Column(name = "saldo", nullable = false, length = 500)
-	private Double saldo;
-
 	public Long getId() {
 		return id;
 	}
@@ -59,14 +56,6 @@ public class FinancasPessoaisEntity {
 
 	public void setData(Date data) {
 		this.data = data;
-	}
-
-	public Double getSaldo() {
-		return saldo;
-	}
-
-	public void setSaldo(Double saldo) {
-		this.saldo = saldo;
 	}
 
 }

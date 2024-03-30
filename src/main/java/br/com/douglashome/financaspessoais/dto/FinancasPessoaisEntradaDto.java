@@ -7,16 +7,14 @@ public class FinancasPessoaisEntradaDto {
 	private String tpGasto;
 	private Date data;
 	private Double custo;
-	private Double saldo;
 
 	public FinancasPessoaisEntradaDto() {
 	}
 
-	public FinancasPessoaisEntradaDto(String tpGasto, Date data, Double custo, Double saldo) {
+	public FinancasPessoaisEntradaDto(String tpGasto, Date data, Double custo) {
 		this.tpGasto = tpGasto;
 		this.data = data;
 		this.custo = custo;
-		this.saldo = saldo;
 	}
 
 	public String getTpGasto() {
@@ -41,14 +39,6 @@ public class FinancasPessoaisEntradaDto {
 
 	public void setCusto(Double custo) {
 		this.custo = custo;
-	}
-
-	public Double getSaldo() {
-		return saldo;
-	}
-
-	public void setSaldo(Double saldo) {
-		this.saldo = saldo;
 	}
 
 }
