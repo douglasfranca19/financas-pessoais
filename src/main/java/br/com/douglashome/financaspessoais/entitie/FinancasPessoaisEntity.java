@@ -26,6 +26,14 @@ public class FinancasPessoaisEntity {
 	@Column(name = "data", nullable = false, length = 500)
 	private Date data;
 
+	public FinancasPessoaisEntity(FinancasPessoaisEntity pessoaisEntity) {
+		// TODO Auto-generated constructor stub
+	}
+
+	public FinancasPessoaisEntity() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public Long getId() {
 		return id;
 	}

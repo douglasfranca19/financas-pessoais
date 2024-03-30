@@ -1,10 +1,12 @@
 package br.com.douglashome.financaspessoais.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,6 +28,11 @@ public class FinancasPessoaisController {
 		return ResponseEntity.ok().body(pessoaisService.listAllFinancas());
 	}
 
+	@GetMapping(value = "/list-id-financas/{id}")
+	public ResponseEntity<Optional<FinancasPessoaisEntity>> listId(@PathVariable Long id) {
+		return ResponseEntity.ok().body(pessoaisService.listId(id));
+	}
+
 	@PostMapping(value = "/insere-gasto")
 	public ResponseEntity<FinancasPessoaisEntity> insertGastos(
 			@RequestBody FinancasPessoaisEntradaDto pessoaisEntradaDto) {
@@ -37,6 +44,7 @@ public class FinancasPessoaisController {
 		pessoaisEntity.setData(pessoaisEntradaDto.getData());
 
 		return ResponseEntity.ok().body(pessoaisService.insertGastos(pessoaisEntity));
+
 	}
 
 }
