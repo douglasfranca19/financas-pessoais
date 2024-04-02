@@ -2,10 +2,13 @@ package br.com.douglashome.financaspessoais.dto;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class FinancasPessoaisEntradaDto {
 
 	private String tpGasto;
 	private Date data;
+
 	private Double custo;
 
 	public FinancasPessoaisEntradaDto() {

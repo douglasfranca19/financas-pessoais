@@ -1,5 +1,6 @@
 package br.com.douglashome.financaspessoais.serviceImpl;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -47,8 +48,61 @@ public class FinancasPessoaisServiceImpl implements FinancasPessoaisService {
 
 		}
 
-		throw new TpGastoFora(
-				"Tipo gasto não autorizado para insert. Tipos disponíveis: Lazer, Visual, Contas ou Poupança");
+		throw new TpGastoFora("Tipo gasto não autorizado. Tipos disponíveis: Lazer, Visual, Contas ou Poupança");
+
+	}
+
+	@Override
+	public List<FinancasPessoaisEntity> buscaTpGasto(String tpGasto) {
+
+		List<FinancasPessoaisEntity> pessoaisEntity = pessoaisRepository.buscaTpGasto(tpGasto);
+
+		if (pessoaisEntity.isEmpty()) {
+			throw new TpGastoFora("Tipo gasto não autorizado. Tipos disponíveis: Lazer, Visual, Contas ou Poupança");
+		}
+
+		return pessoaisEntity;
+	}
+
+	@Override
+	public List<FinancasPessoaisEntity> buscaTpGastoAndDate(String tpGasto, Date dtInicial, Date dtFinal) {
+
+		List<FinancasPessoaisEntity> pessoaisEntity = pessoaisRepository.buscaTpGastoAndDate(tpGasto, dtInicial,
+				dtFinal);
+
+		if (pessoaisEntity.isEmpty()) {
+			throw new TpGastoFora("Tipo gasto ou data não encontrados na base de dados, favor tentar novamente.");
+		}
+
+		return pessoaisEntity;
+	}
+
+	@Override
+	public List<FinancasPessoaisEntity> buscaDate(Date dtInicial, Date dtFinal) {
+
+		List<FinancasPessoaisEntity> pessoaisEntity = pessoaisRepository.buscaDate(dtInicial, dtFinal);
+
+		if (pessoaisEntity.isEmpty()) {
+			throw new TpGastoFora(
+					"Registros não encontrados encontrados na base de dados pelas datas informadas, favor tentar novamente.");
+		}
+
+		return pessoaisEntity;
+	}
+
+	@Override
+	public List<FinancasPessoaisEntity> listAllFinancasSoma() {
+
+		List<FinancasPessoaisEntity> pessoaisEntity = pessoaisRepository.findAll();
+
+		Double sum = 0.0;
+		
+		for (int i =0; i < pessoaisEntity.size(); i += pessoaisEntity.get(0).getCusto()) {
+			
+			sum += i;
+		}
+		
+		return pessoaisEntity;
 
 	}
 
